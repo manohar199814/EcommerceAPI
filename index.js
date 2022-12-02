@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use('/',require('./routes'))
 
+//listen to port 8000
 app.listen(port,(err) => {
     if(err){
         console.log(err);
