@@ -62,7 +62,18 @@ module.exports.update = async (req,res) => {
     try {
         let product = await Product.findById(req.params.id);
         if(product){
-            product.quantity = req.query.number;
+            let quantity = +req.query.number;
+            if(product.quantity == 0 && quantity < 0){
+                return res.status(200).json({
+                    data:{
+                        product:product
+                    },
+                    message: 'quantity is already zero, you can only increment value'
+                });
+            }else{
+                product.quantity += quantity;
+            }
+
             product.save();
             return res.status(200).json({
                 data:{
