@@ -72,6 +72,9 @@ module.exports.update = async (req,res) => {
                 });
             }else{
                 product.quantity += quantity;
+                if(product.quantity < 0){
+                    product.quantity = 0;
+                }
             }
 
             product.save();
