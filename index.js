@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use('/',require('./routes'))
 
 //listen to port 8000
-app.listen(port,(err) => {
+app.listen(process.env.PORT || 8000 ,(err) => {
     if(err){
         console.log(err);
     }
