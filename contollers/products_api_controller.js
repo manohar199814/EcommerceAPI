@@ -3,8 +3,7 @@ const Product = require('../models/products');
 //create product
 module.exports.create = async (req,res) => {
     try{
-        console.log(req.body.product);
-        let product = await Product.create({...req.body.product});
+        let product = await Product.create({name:req.body.product.name,quantity:req.body.product.quantity});
         res.status(200).json({
             data:{
                 product:{
